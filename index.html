@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LabLink Initiative — Connecting Students to National Lab Careers</title>
+  <meta name="description" content="LabLink Initiative is a 501(c)(3) nonprofit bridging the gap between community college students and careers at DOE National Laboratories. Free consultations, internship matching, and career development tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand-900: #2E3A23;
+      --brand-700: #4A5F39;
+      --brand-500: #6E8A53;
+      --brand-300: #A7BE8E;
+      --accent-lime: #A5C43A;
+      --accent-sand: #CDB892;
+      --accent-teal: #3F8E9E;
+      --canvas: #FAF8F0;
+      --surface: #F3F0E6;
+      --surface-2: #E8E3D4;
+      --border: #C9C2AE;
+      --text-strong: #111312;
+      --text-default: #253021;
+      --text-muted: #5F6A58;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--canvas);
+      color: var(--text-default);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--brand-900);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.125rem;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span {
+      color: var(--accent-lime);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--brand-300);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent-lime);
+      color: #1D2A10 !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 60%, #3a5a2e 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(165, 196, 58, 0.2);
+      border: 1px solid rgba(165, 196, 58, 0.4);
+      color: var(--accent-lime);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 780px;
+      margin: 0 auto 1.25rem;
+    }
+    .hero h1 span { color: var(--accent-lime); }
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--brand-300);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent-lime);
+      color: #1D2A10;
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-block;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--surface-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand-700);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+
+    /* SECTIONS */
+    .section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-center { text-align: center; }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brand-500);
+      margin-bottom: 0.5rem;
+    }
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text-strong);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    /* PROGRAM CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .card:hover { box-shadow: 0 8px 32px rgba(46,58,35,0.1); transform: translateY(-2px); }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .card-tag {
+      display: inline-block;
+      background: var(--brand-300);
+      color: var(--brand-900);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* PARTNERS SECTION */
+    .partners-section {
+      background: var(--brand-900);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .partners-section .section-tag { color: var(--accent-lime); }
+    .partners-section h2 { color: var(--white); }
+    .partners-section .section-intro { color: var(--brand-300); }
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .partner-chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--brand-300);
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* PATHWAY STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      counter-reset: steps;
+    }
+    .step {
+      text-align: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      background: var(--brand-700);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0 auto 1rem;
+    }
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 0.4rem;
+    }
+    .step p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--brand-700), var(--brand-900));
+      color: var(--white);
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .cta-section p {
+      color: var(--brand-300);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--brand-900);
+      color: var(--brand-300);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--white); }
+    footer a { color: var(--accent-teal); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .stats-bar { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">LabLink<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#pathways">Pathways</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#consult" class="nav-cta">Free Consultation</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">501(c)(3) Nonprofit — Free for Students</div>
+  <h1>Your Path to a <span>National Lab</span> Career Starts Here</h1>
+  <p>LabLink Initiative connects community college students with paid internships at DOE National Laboratories — no connections required.</p>
+  <div class="hero-ctas">
+    <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="btn-primary">Book a Free Consultation</a>
+    <a href="#programs" class="btn-outline">Explore Programs</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-number">17</div>
+    <div class="stat-label">DOE National Labs</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Free for Students</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">501(c)(3)</div>
+    <div class="stat-label">Tax-Exempt Nonprofit</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">CC → Lab</div>
+    <div class="stat-label">Our Specialty</div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<div id="programs">
+  <div class="section section-center">
+    <div class="section-tag">Programs</div>
+    <h2>Everything you need to land a national lab internship</h2>
+    <p class="section-intro">From skill assessment to offer letter — we support students at every stage of the journey.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tag">Platform</div>
+        <div class="card-icon">🔬</div>
+        <h3>Clean Energy Career Development Platform</h3>
+        <p>AI-powered skill gap analysis, personalized learning pathways, and real-time internship matching across renewable energy, EV, energy storage, and advanced manufacturing sectors.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Internships</div>
+        <div class="card-icon">🏛️</div>
+        <h3>National Lab & Industry Placements</h3>
+        <p>Structured, paid internships at DOE National Laboratories through SULI and CCI programs. We help you find the right lab, prepare your application, and follow up effectively.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Mentorship</div>
+        <div class="card-icon">🤝</div>
+        <h3>1-on-1 Career Coaching</h3>
+        <p>Paired with professionals who've made the CC-to-lab journey themselves. Resume review, interview prep, and real talk about what national lab recruiters actually look for.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Knowledge</div>
+        <div class="card-icon">📬</div>
+        <h3>The LinkBot Newsletter</h3>
+        <p>Biweekly deep dives into emerging STEM fields — quantum computing, clean energy, biotech — with concrete career pathways for students entering each field.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="partners-section" id="partners">
+  <div class="section-tag">Partners & Affiliates</div>
+  <h2>Built on real relationships</h2>
+  <p class="section-intro" style="margin-bottom:2rem">We work with the organizations that actually hire STEM students — and the community organizations that serve underrepresented students.</p>
+  <div class="partner-logos">
+    <div class="partner-chip">Idaho National Laboratory (INL)</div>
+    <div class="partner-chip">Sandia National Laboratories</div>
+    <div class="partner-chip">DOE SULI Program</div>
+    <div class="partner-chip">DOE CCI Program</div>
+    <div class="partner-chip">Phi Theta Kappa (PTK)</div>
+    <div class="partner-chip">SNTJ — STEM News Technical Journal</div>
+    <div class="partner-chip">SSG&amp;I — Sustainability Solutions Group</div>
+    <div class="partner-chip">ALPFA</div>
+    <div class="partner-chip">CEC4A Partner Network (25 orgs)</div>
+  </div>
+</section>
+
+<div id="pathways">
+  <div class="section section-center">
+    <div class="section-tag">How It Works</div>
+    <h2>From community college to national lab — a clear path</h2>
+    <p class="section-intro">Most CC students don't know these opportunities exist. We fix that.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Book a Free Consultation</h3>
+        <p>15 minutes with someone who's done it. No pitch, no upsell. We find out where you are and where you want to go.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Assess Your Skills</h3>
+        <p>Use the CE-CDP to map your current skills against national lab roles. Know exactly what to build.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Build Your Profile</h3>
+        <p>We help you craft a Zintellect profile, a personal statement, and a resume that speaks to what labs look for.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Apply with Confidence</h3>
+        <p>SULI and CCI applications reviewed before submission. Real feedback from people who know the process.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3>Land the Internship</h3>
+        <p>Paid 10-week summer placement at a DOE national lab. The direct hire pathway starts here.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-section" id="consult">
+  <h2>Ready to start? It's free.</h2>
+  <p>Book a 15-minute consultation. No application required — we work with students at every stage.</p>
+  <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request&body=Hi LabLink Team,%0D%0A%0D%0AI'm interested in learning more about national lab internship opportunities.%0D%0A%0D%0AMy background: [brief description]%0D%0AMy goal: [what you're working toward]%0D%0A%0D%0AThanks!" class="btn-primary">Email Us to Book</a>
+</section>
+
+<footer>
+  <strong>LabLink Initiative</strong> — 501(c)(3) Nonprofit Educational Organization
+  <div class="footer-links">
+    <a href="mailto:lablinkinitiative@gmail.com">lablinkinitiative@gmail.com</a>
+    <a href="tel:2092325384">209-232-5384</a>
+    <span>San Francisco, CA</span>
+  </div>
+  <p style="margin-top:0.5rem; color: #5F6A58;">500 Terry Francine Street, 6th Floor, San Francisco, CA 94158<br />
+  EIN available upon request &nbsp;|&nbsp; All services free for students</p>
+</footer>
+
+</body>
+</html>
