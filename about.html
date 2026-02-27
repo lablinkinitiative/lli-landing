@@ -16,7 +16,10 @@
       --brand-700: #4A5F39;
       --brand-500: #6E8A53;
       --brand-300: #A7BE8E;
+      --brand-100: #DCE8CC;
       --accent-lime: #A5C43A;
+      --accent-lime-dark: #8AAF1E;
+      --on-lime: #1D2A10;
       --accent-sand: #CDB892;
       --accent-teal: #3F8E9E;
       --canvas: #FAF8F0;
@@ -29,22 +32,38 @@
       --white: #FFFFFF;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--canvas); color: var(--text-default); line-height: 1.6; }
+    body { font-family: 'Inter', sans-serif; background: var(--canvas); color: var(--text-default); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, picture { display: block; max-width: 100%; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--accent-lime); outline-offset: 3px; border-radius: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+    :target { scroll-margin-top: 80px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+    }
+
+    /* SKIP LINK */
+    .skip-link { position: absolute; top: -100%; left: 1rem; background: var(--brand-700); color: var(--white); padding: 0.75rem 1.5rem; font-weight: 600; text-decoration: none; z-index: 9999; border-radius: 0 0 8px 8px; transition: top 0.12s; }
+    .skip-link:focus { top: 0; }
 
     /* NAV */
-    nav { background: var(--brand-900); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-    .nav-logo { color: var(--white); font-weight: 700; font-size: 1.125rem; text-decoration: none; }
+    .site-header { background: var(--brand-900); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 1100px; margin: 0 auto; gap: 1rem; }
+    .nav-logo { color: var(--white); font-weight: 700; font-size: 1.05rem; text-decoration: none; flex-shrink: 0; }
     .nav-logo span { color: var(--accent-lime); }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
-    .nav-links a { color: var(--brand-300); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
-    .nav-cta { background: var(--accent-lime); color: #1D2A10 !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600 !important; }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
-    .mobile-menu { display: none; background: var(--brand-900); padding: 1rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-    .mobile-menu a { display: block; color: var(--brand-300); text-decoration: none; padding: 0.6rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu .mobile-cta { display: block; margin-top: 1rem; background: var(--accent-lime); color: #1D2A10 !important; text-align: center; padding: 0.75rem; border-radius: 8px; font-weight: 700; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--brand-300); text-decoration: none; font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.75rem; border-radius: 4px; transition: color 0.12s, background 0.12s; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.07); }
+    .nav-links .nav-cta { background: var(--accent-lime); color: var(--on-lime) !important; font-weight: 700; padding: 0.45rem 1.1rem; margin-left: 0.5rem; }
+    .nav-links .nav-cta:hover { background: var(--accent-lime-dark); }
+    .nav-hamburger { display: none; background: none; border: 2px solid rgba(255,255,255,0.3); cursor: pointer; padding: 6px 8px; border-radius: 4px; gap: 5px; flex-direction: column; align-items: center; justify-content: center; width: 40px; height: 36px; }
+    .nav-hamburger span { display: block; width: 20px; height: 2px; background: var(--white); border-radius: 2px; }
+    #mobile-menu { background: var(--brand-900); border-top: 1px solid rgba(255,255,255,0.08); padding: 1rem 1.5rem 1.5rem; }
+    #mobile-menu[hidden] { display: none; }
+    #mobile-menu a { display: block; color: var(--brand-300); text-decoration: none; padding: 0.65rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); transition: color 0.12s; }
+    #mobile-menu a:hover { color: var(--white); }
+    #mobile-menu a:last-of-type { border-bottom: none; }
+    #mobile-menu .mobile-cta { display: block; margin-top: 1rem; background: var(--accent-lime); color: var(--on-lime); text-align: center; padding: 0.8rem; border-radius: 8px; font-weight: 700; text-decoration: none; border-bottom: none; }
 
     /* PAGE HERO */
     .page-hero { background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 100%); color: var(--white); padding: 4rem 2rem 3.5rem; text-align: center; }
@@ -144,7 +163,7 @@
     .footer-mini-links { display: flex; gap: 1.5rem; }
 
     /* RESPONSIVE */
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
       .mission-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -155,43 +174,44 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">LabLink<span>.</span></a>
-  <ul class="nav-links">
-    <li><a href="/#programs">Programs</a></li>
-    <li><a href="internships.html">Internships</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="/#partners">Partners</a></li>
-    <li><a href="/#newsletter">Newsletter</a></li>
-    <li><a href="donate.html">Donate</a></li>
-    <li><a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="nav-cta">Free Consultation</a></li>
-  </ul>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="/" onclick="closeMenu()">Home</a>
-  <a href="internships.html" onclick="closeMenu()">Internships</a>
-  <a href="about.html" onclick="closeMenu()">About Us</a>
-  <a href="donate.html" onclick="closeMenu()">Donate</a>
-  <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="mobile-cta" onclick="closeMenu()">Free Consultation</a>
-</div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" role="banner">
+  <nav class="nav-inner" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="LabLink Initiative — Home">Lab<span>Link</span> Initiative</a>
+    <ul class="nav-links" role="list">
+      <li><a href="/about.html" class="active" aria-current="page">About</a></li>
+      <li><a href="/internships.html">Internships</a></li>
+      <li><a href="https://github.com/lablinkinitiative" target="_blank" rel="noopener">Newsletter</a></li>
+      <li><a href="/donate.html" class="nav-cta">Donate</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+  </nav>
+  <div id="mobile-menu" hidden aria-label="Mobile navigation">
+    <a href="/about.html">About Us</a>
+    <a href="/internships.html">Find Internships</a>
+    <a href="https://github.com/lablinkinitiative" target="_blank" rel="noopener">Newsletter</a>
+    <a href="/donate.html" class="mobile-cta">Support Our Mission</a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
 
 <!-- PAGE HERO -->
-<div class="page-hero">
+<div class="page-hero" role="region" aria-labelledby="page-title">
   <div class="breadcrumb"><a href="/">Home</a> &rsaquo; About Us</div>
-  <h1>About <span>LabLink Initiative</span></h1>
+  <h1 id="page-title">About <span>LabLink Initiative</span></h1>
   <p>A 501(c)(3) nonprofit co-founded by two people who bridged the gap from community college to national laboratories — and built an organization to help others do the same.</p>
 </div>
 
 <!-- WELCOME PHOTOS -->
 <div style="max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 0;">
   <div class="welcome-photos">
-    <div class="welcome-photo"><img src="images/about-welcome-team.jpg" alt="LabLink team collaboration" loading="lazy" /></div>
-    <div class="welcome-photo"><img src="images/about-welcome-office.jpg" alt="Professional workspace" loading="lazy" /></div>
-    <div class="welcome-photo"><img src="images/about-welcome-students.jpg" alt="Students working together" loading="lazy" /></div>
+    <div class="welcome-photo"><img src="images/about-welcome-team.jpg" alt="LabLink team collaboration" loading="lazy" decoding="async" width="360" height="200" /></div>
+    <div class="welcome-photo"><img src="images/about-welcome-office.jpg" alt="Professional workspace" loading="lazy" decoding="async" width="360" height="200" /></div>
+    <div class="welcome-photo"><img src="images/about-welcome-students.jpg" alt="Students working together" loading="lazy" decoding="async" width="360" height="200" /></div>
   </div>
 </div>
 
@@ -260,7 +280,7 @@
     <div class="founder-full">
       <div class="founder-header">
         <div class="founder-avatar">
-          <img src="images/michael-sarmento.avif" alt="Michael Sarmiento" />
+          <img src="images/michael-sarmento.avif" alt="Michael Sarmiento, Co-Founder and Executive Director" loading="lazy" decoding="async" width="110" height="110" />
         </div>
         <div class="founder-title-block">
           <h3>Michael Sarmiento</h3>
@@ -283,7 +303,7 @@
     <div class="founder-full">
       <div class="founder-header">
         <div class="founder-avatar">
-          <img src="images/sean-florez.avif" alt="Sean Florez" />
+          <img src="images/sean-florez.avif" alt="Sean Florez, Co-Founder and Director of Technology Innovation" loading="lazy" decoding="async" width="110" height="110" />
         </div>
         <div class="founder-title-block">
           <h3>Sean Florez</h3>
@@ -423,34 +443,47 @@
 
 <!-- CTA -->
 <div class="page-cta">
-  <h2>Work with us</h2>
+  <h2>Get Involved</h2>
   <p>Whether you're a student, a potential partner organization, or someone who wants to support our mission — we'd love to hear from you.</p>
   <div class="page-cta-buttons">
-    <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="btn-white">Book a Free Consultation</a>
+    <a href="/internships.html" class="btn-white">Find Internships</a>
     <a href="donate.html" class="btn-lime">Support Our Work</a>
   </div>
 </div>
 
-<footer>
-  <div class="footer-mini">
-    <span>© 2026 <a href="/">LabLink Initiative</a> · 501(c)(3) Nonprofit · EIN available upon request</span>
-    <div class="footer-mini-links">
-      <a href="/">Home</a>
-      <a href="internships.html">Internships</a>
-      <a href="donate.html">Donate</a>
-      <a href="mailto:lablinkinitiative@gmail.com">Contact</a>
-    </div>
+</main>
+
+<footer role="contentinfo" style="background: var(--brand-900); color: var(--brand-300); padding: 1.5rem 2rem;">
+  <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem;">
+    <span>&copy; 2026 <a href="/" style="color: var(--brand-300); text-decoration: none;">LabLink Initiative</a> &middot; 501(c)(3) Nonprofit</span>
+    <nav aria-label="Footer navigation" style="display: flex; gap: 1.5rem;">
+      <a href="/" style="color: var(--brand-300); text-decoration: none;">Home</a>
+      <a href="/internships.html" style="color: var(--brand-300); text-decoration: none;">Internships</a>
+      <a href="/donate.html" style="color: var(--brand-300); text-decoration: none;">Donate</a>
+      <a href="mailto:lablinkinitiative@gmail.com" style="color: var(--brand-300); text-decoration: none;">Contact</a>
+    </nav>
   </div>
 </footer>
 
 <script>
-  const hamburger = document.getElementById('hamburger');
+  const hamburger = document.querySelector('.nav-hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    const open = mobileMenu.style.display === 'block';
-    mobileMenu.style.display = open ? 'none' : 'block';
-  });
-  function closeMenu() { mobileMenu.style.display = 'none'; }
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+      mobileMenu.hidden = isOpen;
+      if (!isOpen) { const f = mobileMenu.querySelector('a, button'); if (f) f.focus(); }
+      else { hamburger.focus(); }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.hidden) {
+        mobileMenu.hidden = true;
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.focus();
+      }
+    });
+  }
 </script>
 
 </body>
