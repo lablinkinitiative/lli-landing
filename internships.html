@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internship Programs — LabLink Initiative</title>
+  <meta name="description" content="Browse paid internship programs at DOE National Labs, NASA, AFRL, and industry partners. SULI, CCI, AFRL Scholars, NASA Internships and more. Free student support from LabLink Initiative." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand-900: #2E3A23;
+      --brand-700: #4A5F39;
+      --brand-500: #6E8A53;
+      --brand-300: #A7BE8E;
+      --accent-lime: #A5C43A;
+      --accent-sand: #CDB892;
+      --accent-teal: #3F8E9E;
+      --canvas: #FAF8F0;
+      --surface: #F3F0E6;
+      --surface-2: #E8E3D4;
+      --border: #C9C2AE;
+      --text-strong: #111312;
+      --text-default: #253021;
+      --text-muted: #5F6A58;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--canvas);
+      color: var(--text-default);
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--brand-900);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { color: var(--white); font-weight: 700; font-size: 1.125rem; text-decoration: none; }
+    .nav-logo span { color: var(--accent-lime); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--brand-300); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { background: var(--accent-lime); color: #1D2A10 !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600 !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--brand-900); padding: 1rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu a { display: block; color: var(--brand-300); text-decoration: none; padding: 0.6rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta { display: block; margin-top: 1rem; background: var(--accent-lime); color: #1D2A10 !important; text-align: center; padding: 0.75rem; border-radius: 8px; font-weight: 700; }
+
+    /* ─── SHARED BUTTONS ─── */
+    .btn-primary { background: var(--accent-lime); color: #1D2A10; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: opacity 0.15s, transform 0.1s; border: none; cursor: pointer; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-green { background: var(--brand-700); color: var(--white); padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: inline-block; transition: background 0.15s; border: none; cursor: pointer; }
+    .btn-green:hover { background: var(--brand-900); }
+    .btn-outline-small { background: transparent; color: var(--brand-700); padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: inline-block; border: 2px solid var(--brand-700); transition: all 0.15s; }
+    .btn-outline-small:hover { background: var(--brand-700); color: var(--white); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 100%);
+      color: var(--white);
+      padding: 4rem 2rem 3.5rem;
+      text-align: center;
+    }
+    .page-hero .breadcrumb { font-size: 0.82rem; color: var(--brand-300); margin-bottom: 1rem; }
+    .page-hero .breadcrumb a { color: var(--brand-300); text-decoration: none; }
+    .page-hero .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.9rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 740px;
+      margin: 0 auto 1rem;
+    }
+    .page-hero h1 span { color: var(--accent-lime); }
+    .page-hero p { color: var(--brand-300); font-size: 1rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+    .hero-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-link-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 0.55rem 1.25rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+    .hero-link-btn:hover { background: rgba(255,255,255,0.18); }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 58px;
+      z-index: 90;
+    }
+    .filter-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .filter-label { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+    .filter-group { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .filter-btn {
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover { border-color: var(--brand-500); color: var(--brand-700); }
+    .filter-btn.active { background: var(--brand-700); border-color: var(--brand-700); color: var(--white); font-weight: 600; }
+    .filter-divider { width: 1px; height: 28px; background: var(--border); margin: 0 0.25rem; }
+
+    /* ─── MAIN LAYOUT ─── */
+    .main-content { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; display: grid; grid-template-columns: 1fr; gap: 3rem; }
+
+    /* ─── SECTION HEADINGS ─── */
+    .section-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--brand-500); margin-bottom: 0.4rem; }
+    h2.section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; color: var(--text-strong); letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+    .section-intro { font-size: 1rem; color: var(--text-muted); max-width: 640px; line-height: 1.7; margin-bottom: 2rem; }
+
+    /* ─── LISTING CARDS ─── */
+    .listings-grid { display: grid; gap: 1.25rem; }
+    .listing-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.25rem;
+      align-items: start;
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .listing-card:hover { box-shadow: 0 6px 24px rgba(46,58,35,0.09); transform: translateY(-1px); }
+    .listing-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .listing-body { min-width: 0; }
+    .listing-org { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-500); margin-bottom: 0.25rem; }
+    .listing-name { font-size: 1.1rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.5rem; line-height: 1.3; }
+    .listing-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.85rem; }
+    .listing-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .meta-item { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+    .meta-item strong { color: var(--text-default); }
+    .listing-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .listing-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 4px;
+    }
+    .listing-tag.tag-doe { background: rgba(74,95,57,0.1); border-color: rgba(74,95,57,0.25); color: var(--brand-700); }
+    .listing-tag.tag-federal { background: rgba(63,142,158,0.1); border-color: rgba(63,142,158,0.25); color: var(--accent-teal); }
+    .listing-tag.tag-cc { background: rgba(165,196,58,0.12); border-color: rgba(165,196,58,0.3); color: #4a6000; }
+    .listing-actions { display: flex; flex-direction: column; gap: 0.6rem; flex-shrink: 0; align-items: flex-end; }
+    .deadline-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      text-align: center;
+    }
+    .deadline-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); }
+    .deadline-date { font-size: 0.82rem; font-weight: 700; color: var(--text-default); }
+    .track-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .track-btn:hover { border-color: var(--brand-500); color: var(--brand-700); }
+    .track-btn.tracked { background: var(--brand-700); border-color: var(--brand-700); color: var(--white); }
+    .listing-card.hidden { display: none; }
+    .no-results { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 1rem; display: none; }
+    .no-results.visible { display: block; }
+
+    /* ─── ASSESSMENT SECTION ─── */
+    .assessment-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .assessment-intro { margin-bottom: 2rem; }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-question { font-size: 1.1rem; font-weight: 700; color: var(--text-strong); margin-bottom: 1.25rem; }
+    .quiz-options { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .quiz-option {
+      background: var(--canvas);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-align: left;
+    }
+    .quiz-option:hover { border-color: var(--brand-500); background: var(--surface); }
+    .quiz-option.selected { border-color: var(--brand-700); background: rgba(74,95,57,0.07); }
+    .quiz-option-title { font-weight: 600; font-size: 0.95rem; color: var(--text-strong); }
+    .quiz-option-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .quiz-progress { display: flex; gap: 0.4rem; margin-bottom: 1.75rem; }
+    .quiz-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: background 0.2s; }
+    .quiz-dot.done { background: var(--brand-500); }
+    .quiz-dot.current { background: var(--brand-700); }
+    .quiz-nav { display: flex; gap: 1rem; margin-top: 1.5rem; align-items: center; }
+    .quiz-back { background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; padding: 0; }
+    .quiz-back:hover { color: var(--text-default); }
+    .quiz-results { display: none; }
+    .quiz-results.active { display: block; }
+    .results-header { font-size: 1.2rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.5rem; }
+    .results-sub { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.75rem; }
+    .results-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .result-card {
+      background: var(--canvas);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .result-card.top-match { border-color: var(--accent-lime); background: rgba(165,196,58,0.05); }
+    .result-match-badge { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #4a6000; margin-bottom: 0.5rem; }
+    .result-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.35rem; }
+    .result-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .result-card a { display: inline-block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--brand-700); text-decoration: none; }
+    .result-card a:hover { text-decoration: underline; }
+    .quiz-restart { background: none; border: none; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; text-decoration: underline; margin-top: 1.5rem; padding: 0; display: block; }
+
+    /* ─── APPLICATION TRACKER ─── */
+    .tracker-section {
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+    }
+    .tracker-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .add-app-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    .add-app-form.open { display: block; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .form-input, .form-select {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--canvas);
+      color: var(--text-default);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--brand-700); }
+    .form-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+    .tracker-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .tracker-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .tracker-item-name { font-weight: 700; font-size: 0.95rem; color: var(--text-strong); flex: 1; min-width: 200px; }
+    .tracker-item-org { font-size: 0.82rem; color: var(--text-muted); }
+    .status-select {
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--canvas);
+      color: var(--text-default);
+      cursor: pointer;
+      outline: none;
+      font-family: inherit;
+    }
+    .status-select.status-researching { background: rgba(63,142,158,0.1); border-color: rgba(63,142,158,0.3); color: #1d6575; }
+    .status-select.status-preparing { background: rgba(165,196,58,0.1); border-color: rgba(165,196,58,0.3); color: #4a6000; }
+    .status-select.status-submitted { background: rgba(74,95,57,0.1); border-color: rgba(74,95,57,0.3); color: var(--brand-700); }
+    .status-select.status-pending { background: rgba(178,106,0,0.1); border-color: rgba(178,106,0,0.3); color: #7a4b00; }
+    .status-select.status-accepted { background: rgba(46,125,50,0.12); border-color: rgba(46,125,50,0.35); color: #1b5e20; }
+    .status-select.status-declined { background: rgba(198,40,40,0.08); border-color: rgba(198,40,40,0.25); color: #7f1a1a; }
+    .tracker-delete { background: none; border: none; color: var(--border); cursor: pointer; font-size: 1.1rem; padding: 0.2rem; transition: color 0.15s; }
+    .tracker-delete:hover { color: #C62828; }
+    .tracker-empty { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .tracker-deadline { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* ─── CTA BOTTOM ─── */
+    .page-cta {
+      background: linear-gradient(135deg, var(--brand-700), var(--brand-900));
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .page-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+    .page-cta p { color: var(--brand-300); font-size: 1rem; max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+    .page-cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--brand-900); padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; transition: opacity 0.15s; }
+    .btn-white:hover { opacity: 0.9; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--brand-900); color: var(--brand-300); padding: 2rem; font-size: 0.85rem; }
+    .footer-mini { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-mini a { color: var(--brand-300); text-decoration: none; }
+    .footer-mini a:hover { color: var(--white); }
+    .footer-mini-links { display: flex; gap: 1.5rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .listing-card { grid-template-columns: auto 1fr; }
+      .listing-actions { grid-column: 1 / -1; flex-direction: row; align-items: center; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .filter-inner { gap: 0.75rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .listing-card { grid-template-columns: 1fr; }
+      .listing-icon { display: none; }
+    }
+    @media (max-width: 480px) {
+      .quiz-options { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">LabLink<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#programs">Programs</a></li>
+    <li><a href="internships.html" class="active">Internships</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="/#partners">Partners</a></li>
+    <li><a href="/#newsletter">Newsletter</a></li>
+    <li><a href="donate.html">Donate</a></li>
+    <li><a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMenu()">Home</a>
+  <a href="internships.html" onclick="closeMenu()">Internships</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="donate.html" onclick="closeMenu()">Donate</a>
+  <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="mobile-cta" onclick="closeMenu()">Free Consultation</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Internship Programs</div>
+  <h1>Find Your <span>Internship</span></h1>
+  <p>Real, paid opportunities at National Laboratories, federal agencies, and industry partners — for students in STEM and Business. We help you find them, prepare, and apply.</p>
+  <div class="hero-links">
+    <a href="#listings" class="hero-link-btn">Browse Programs</a>
+    <a href="#assess" class="hero-link-btn">Skills Assessment</a>
+    <a href="#tracker" class="hero-link-btn">Application Tracker</a>
+    <a href="mailto:lablinkinitiative@gmail.com?subject=Internship Support" class="hero-link-btn">Get Help Applying</a>
+  </div>
+</div>
+
+<!-- LAB PHOTO -->
+<div style="overflow:hidden;max-height:280px;">
+  <img src="images/professional-at-lab.jpg" alt="Professional at a national laboratory" style="width:100%;height:280px;object-fit:cover;object-position:center 25%;display:block;" loading="lazy" />
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar">
+  <div class="filter-inner">
+    <span class="filter-label">Filter:</span>
+    <div class="filter-group" id="type-filters">
+      <button class="filter-btn active" data-filter="type" data-value="all">All Types</button>
+      <button class="filter-btn" data-filter="type" data-value="doe">DOE / National Lab</button>
+      <button class="filter-btn" data-filter="type" data-value="federal">Federal Agency</button>
+      <button class="filter-btn" data-filter="type" data-value="industry">Industry</button>
+    </div>
+    <div class="filter-divider"></div>
+    <div class="filter-group" id="level-filters">
+      <button class="filter-btn active" data-filter="level" data-value="all">All Levels</button>
+      <button class="filter-btn" data-filter="level" data-value="cc">Community College</button>
+      <button class="filter-btn" data-filter="level" data-value="undergrad">Undergrad</button>
+      <button class="filter-btn" data-filter="level" data-value="grad">Graduate</button>
+    </div>
+  </div>
+</div>
+
+<div class="main-content">
+
+  <!-- LISTINGS SECTION -->
+  <div id="listings">
+    <div class="section-tag">Internship Programs</div>
+    <h2 class="section-title">10 Paid Opportunities — STEM & Business</h2>
+    <p class="section-intro">Click any program to learn more. Use "Track This" to add it to your personal application tracker below.</p>
+
+    <div class="listings-grid" id="listings-grid">
+
+      <!-- DOE SULI -->
+      <div class="listing-card" data-type="doe" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">⚛️</div>
+        <div class="listing-body">
+          <div class="listing-org">U.S. Department of Energy / ORISE</div>
+          <div class="listing-name">SULI — Science Undergraduate Laboratory Internships</div>
+          <div class="listing-desc">SULI places undergraduate students in paid research roles at one of the 17 DOE national laboratories. Students work directly with lab scientists on real research projects in energy, environment, computing, materials science, and more. One of the most prestigious undergraduate research experiences available.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>17 DOE National Labs</strong></div>
+            <div class="meta-item">💰 <strong>$700–850/week</strong></div>
+            <div class="meta-item">⏱ <strong>10 or 16 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer, Fall, Spring terms</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE Program</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">STEM</span>
+            <span class="listing-tag">Research</span>
+            <span class="listing-tag">US Citizen/LPR</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Summer 2026</div>
+            <div class="deadline-date">Check Zintellect</div>
+          </div>
+          <a href="https://science.osti.gov/wdts/suli" target="_blank" rel="noopener" class="btn-green">Apply on Zintellect</a>
+          <button class="track-btn" data-name="DOE SULI" data-org="U.S. Department of Energy" onclick="trackProgram(this, 'DOE SULI', 'U.S. Department of Energy')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- DOE CCI -->
+      <div class="listing-card" data-type="doe" data-level="cc" data-field="stem">
+        <div class="listing-icon">🏛️</div>
+        <div class="listing-body">
+          <div class="listing-org">U.S. Department of Energy / ORISE</div>
+          <div class="listing-name">CCI — Community College Internships</div>
+          <div class="listing-desc">CCI is specifically designed for community college students — one of the few federal internship programs that actively recruits CC students for research at national labs. A direct pathway from community college to a DOE national laboratory internship. LabLink Initiative was founded specifically to help CC students access this program.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>17 DOE National Labs</strong></div>
+            <div class="meta-item">💰 <strong>~$700/week</strong></div>
+            <div class="meta-item">⏱ <strong>10 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer term</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE Program</span>
+            <span class="listing-tag tag-cc">Community College</span>
+            <span class="listing-tag">STEM</span>
+            <span class="listing-tag">Research</span>
+            <span class="listing-tag">US Citizen/LPR</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Summer 2026</div>
+            <div class="deadline-date">Check Zintellect</div>
+          </div>
+          <a href="https://science.osti.gov/wdts/cci" target="_blank" rel="noopener" class="btn-green">Apply on Zintellect</a>
+          <button class="track-btn" onclick="trackProgram(this, 'DOE CCI', 'U.S. Department of Energy')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- AFRL Scholars -->
+      <div class="listing-card" data-type="federal" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">✈️</div>
+        <div class="listing-body">
+          <div class="listing-org">Air Force Research Laboratory (AFRL)</div>
+          <div class="listing-name">AFRL Scholars Program</div>
+          <div class="listing-desc">The AFRL Scholars Program places students at Air Force Research Laboratory sites across the country to work alongside AFRL scientists and engineers. Programs span aerospace, materials, directed energy, information, and human performance research. Open from high school through doctoral students.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>8 AFRL Sites Nationwide</strong></div>
+            <div class="meta-item">💰 <strong>Competitive stipend</strong></div>
+            <div class="meta-item">⏱ <strong>8–12 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-federal">Federal Agency</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Grad</span>
+            <span class="listing-tag">Defense</span>
+            <span class="listing-tag">Aerospace</span>
+            <span class="listing-tag">US Citizen</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Summer 2026</div>
+            <div class="deadline-date">Check AFRL</div>
+          </div>
+          <a href="https://afrlscholars.usra.edu" target="_blank" rel="noopener" class="btn-green">AFRL Scholars Portal</a>
+          <button class="track-btn" onclick="trackProgram(this, 'AFRL Scholars', 'Air Force Research Laboratory')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- NASA Internships -->
+      <div class="listing-card" data-type="federal" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">🚀</div>
+        <div class="listing-body">
+          <div class="listing-org">NASA</div>
+          <div class="listing-name">NASA Internships</div>
+          <div class="listing-desc">NASA offers internship opportunities across all 10 NASA centers including JPL, Ames, Glenn, and Goddard. Students work on real mission-critical projects in aerospace engineering, computer science, data science, communications, and business operations. Open to a broad range of STEM and Business disciplines.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>10+ NASA Centers</strong></div>
+            <div class="meta-item">💰 <strong>$700–1,000/week</strong></div>
+            <div class="meta-item">⏱ <strong>10–16 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer, Fall, Spring</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-federal">Federal Agency</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Grad</span>
+            <span class="listing-tag">Aerospace</span>
+            <span class="listing-tag">Computing</span>
+            <span class="listing-tag">Business</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Spring 2026</div>
+            <div class="deadline-date">Rolling</div>
+          </div>
+          <a href="https://intern.nasa.gov" target="_blank" rel="noopener" class="btn-green">Apply at intern.nasa.gov</a>
+          <button class="track-btn" onclick="trackProgram(this, 'NASA Internships', 'NASA')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- INL Research Intern -->
+      <div class="listing-card" data-type="doe" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">⚡</div>
+        <div class="listing-body">
+          <div class="listing-org">Idaho National Laboratory</div>
+          <div class="listing-name">INL Undergraduate Research Program</div>
+          <div class="listing-desc">Idaho National Laboratory — the nation's lead nuclear energy laboratory — offers undergraduate research opportunities through the DOE SULI and CCI programs, as well as direct INL internship programs. INL has particular strength in nuclear energy, materials science, cybersecurity, and energy storage. Co-founder Michael Sarmiento interned at INL.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>Idaho Falls, ID</strong></div>
+            <div class="meta-item">💰 <strong>$700–850/week (SULI rate)</strong></div>
+            <div class="meta-item">⏱ <strong>10–16 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer, Fall, Spring</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE National Lab</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Nuclear</span>
+            <span class="listing-tag">Energy</span>
+            <span class="listing-tag">Cybersecurity</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Via SULI / CCI</div>
+            <div class="deadline-date">Zintellect</div>
+          </div>
+          <a href="https://inl.gov/inl-initiatives/education/university-student-research/" target="_blank" rel="noopener" class="btn-green">INL Research Programs</a>
+          <button class="track-btn" onclick="trackProgram(this, 'INL Research Program', 'Idaho National Laboratory')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- Sandia -->
+      <div class="listing-card" data-type="doe" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">🔒</div>
+        <div class="listing-body">
+          <div class="listing-org">Sandia National Laboratories</div>
+          <div class="listing-name">Sandia Student Internships</div>
+          <div class="listing-desc">Sandia National Laboratories, managed by NTESS for the DOE's National Nuclear Security Administration, offers internship opportunities across engineering, computer science, materials research, and national security disciplines. Programs available through DOE SULI and direct application via the Sandia careers portal.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>Albuquerque, NM & Livermore, CA</strong></div>
+            <div class="meta-item">💰 <strong>Competitive</strong></div>
+            <div class="meta-item">⏱ <strong>12–16 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE National Lab</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Grad</span>
+            <span class="listing-tag">Engineering</span>
+            <span class="listing-tag">Security</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Summer 2026</div>
+            <div class="deadline-date">Check Careers</div>
+          </div>
+          <a href="https://www.sandia.gov/careers/students-postdocs/" target="_blank" rel="noopener" class="btn-green">Sandia Careers Portal</a>
+          <button class="track-btn" onclick="trackProgram(this, 'Sandia Internships', 'Sandia National Laboratories')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- LLNL -->
+      <div class="listing-card" data-type="doe" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">🧪</div>
+        <div class="listing-body">
+          <div class="listing-org">Lawrence Livermore National Laboratory</div>
+          <div class="listing-name">LLNL Student Internship Program</div>
+          <div class="listing-desc">Lawrence Livermore National Laboratory offers student research internships across national security, high-performance computing, energy, climate, and materials science. Programs available via DOE SULI and the LLNL Student Internship Program. Co-founder Michael Sarmiento interned at LLNL through NNSA.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>Livermore, CA</strong></div>
+            <div class="meta-item">💰 <strong>Competitive</strong></div>
+            <div class="meta-item">⏱ <strong>10–16 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Year-round</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE National Lab</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Grad</span>
+            <span class="listing-tag">Computing</span>
+            <span class="listing-tag">Physics</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Year-round</div>
+            <div class="deadline-date">Rolling</div>
+          </div>
+          <a href="https://st.llnl.gov/student-programs" target="_blank" rel="noopener" class="btn-green">LLNL Student Programs</a>
+          <button class="track-btn" onclick="trackProgram(this, 'LLNL Student Internship', 'Lawrence Livermore National Lab')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- ORNL Mickey Leland -->
+      <div class="listing-card" data-type="doe" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">🌱</div>
+        <div class="listing-body">
+          <div class="listing-org">Oak Ridge National Laboratory / DOE</div>
+          <div class="listing-name">Mickey Leland Energy Fellowship</div>
+          <div class="listing-desc">The Mickey Leland Energy Fellowship is a 10-week summer research program for historically underrepresented students in STEM. Fellows work at DOE facilities on fossil energy and carbon management research. One of the few programs with an explicit focus on expanding access for underrepresented communities.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>DOE Research Facilities</strong></div>
+            <div class="meta-item">💰 <strong>~$620/week + housing</strong></div>
+            <div class="meta-item">⏱ <strong>10 weeks</strong></div>
+            <div class="meta-item">📅 <strong>Summer</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-doe">DOE Fellowship</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Grad</span>
+            <span class="listing-tag">Energy</span>
+            <span class="listing-tag">DEI Focus</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Summer 2026</div>
+            <div class="deadline-date">Check NETL</div>
+          </div>
+          <a href="https://www.netl.doe.gov/mlef" target="_blank" rel="noopener" class="btn-green">MLEF Program Page</a>
+          <button class="track-btn" onclick="trackProgram(this, 'Mickey Leland Energy Fellowship', 'DOE / ORNL')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- EPA STAR -->
+      <div class="listing-card" data-type="federal" data-level="undergrad" data-field="stem">
+        <div class="listing-icon">🌍</div>
+        <div class="listing-body">
+          <div class="listing-org">U.S. Environmental Protection Agency</div>
+          <div class="listing-name">EPA Greater Research Opportunities (GRO)</div>
+          <div class="listing-desc">EPA GRO Fellowship provides both academic (tuition assistance) and internship support for undergrad students pursuing environmental research. Fellows complete a summer internship at an EPA facility and receive funding toward their degree. Strong alignment with sustainability, environmental science, and policy career paths.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>EPA Facilities Nationwide</strong></div>
+            <div class="meta-item">💰 <strong>Up to $17,500/year + internship</strong></div>
+            <div class="meta-item">⏱ <strong>Summer internship component</strong></div>
+            <div class="meta-item">📅 <strong>Annual</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag tag-federal">Federal Agency</span>
+            <span class="listing-tag">Undergrad</span>
+            <span class="listing-tag">Environment</span>
+            <span class="listing-tag">Policy</span>
+            <span class="listing-tag">Sustainability</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Annual</div>
+            <div class="deadline-date">Check EPA</div>
+          </div>
+          <a href="https://www.epa.gov/research-grants/greater-research-opportunities-gro-fellowships-undergraduate-environmental-study" target="_blank" rel="noopener" class="btn-green">EPA GRO Program</a>
+          <button class="track-btn" onclick="trackProgram(this, 'EPA GRO Fellowship', 'U.S. EPA')">+ Track This</button>
+        </div>
+      </div>
+
+      <!-- Industry via LLI -->
+      <div class="listing-card" data-type="industry" data-level="undergrad" data-field="both">
+        <div class="listing-icon">🏢</div>
+        <div class="listing-body">
+          <div class="listing-org">Industry Partners — via LabLink Initiative</div>
+          <div class="listing-name">STEM & Business Industry Placements</div>
+          <div class="listing-desc">LabLink Initiative connects students with paid internship placements at industry partners in clean energy, biotech, AI/ML, advanced manufacturing, and sustainability sectors. We match students based on background, interests, and skills. Business Analytics, Data Science, and Operations students equally welcome alongside STEM majors.</div>
+          <div class="listing-meta">
+            <div class="meta-item">📍 <strong>Various locations / remote options</strong></div>
+            <div class="meta-item">💰 <strong>Varies by employer</strong></div>
+            <div class="meta-item">⏱ <strong>Flexible</strong></div>
+            <div class="meta-item">📅 <strong>Year-round openings</strong></div>
+          </div>
+          <div class="listing-tags">
+            <span class="listing-tag">Industry</span>
+            <span class="listing-tag">Clean Energy</span>
+            <span class="listing-tag">Biotech</span>
+            <span class="listing-tag">AI/ML</span>
+            <span class="listing-tag">Business</span>
+            <span class="listing-tag">All Levels</span>
+          </div>
+        </div>
+        <div class="listing-actions">
+          <div class="deadline-badge">
+            <div class="deadline-label">Year-round</div>
+            <div class="deadline-date">Rolling</div>
+          </div>
+          <a href="mailto:lablinkinitiative@gmail.com?subject=Industry Placement Inquiry" class="btn-green">Contact LLI</a>
+          <button class="track-btn" onclick="trackProgram(this, 'Industry Placement (via LLI)', 'LabLink Initiative')">+ Track This</button>
+        </div>
+      </div>
+
+    </div><!-- /listings-grid -->
+
+    <div class="no-results" id="no-results">No programs match the selected filters. <a href="#" onclick="resetFilters(); return false;" style="color: var(--brand-700);">Reset filters</a></div>
+
+    <div style="margin-top: 2rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; font-size: 0.88rem; color: var(--text-muted);">
+      <strong style="color: var(--text-default);">Not sure where to start?</strong> Book a free 15-minute consultation with our team. We'll walk you through which programs match your background and timeline. <a href="mailto:lablinkinitiative@gmail.com?subject=Internship Guidance" style="color: var(--brand-700); font-weight: 600;">lablinkinitiative@gmail.com</a>
+    </div>
+
+  </div><!-- /listings -->
+
+  <!-- SKILL ASSESSMENT -->
+  <div id="assess" class="assessment-section">
+    <div class="assessment-intro">
+      <div class="section-tag">Skills Assessment</div>
+      <h2 class="section-title">Find the right program for you</h2>
+      <p class="section-intro" style="margin-bottom: 0;">Answer 5 quick questions and we'll recommend the programs that best match your background and goals.</p>
+    </div>
+
+    <div id="quiz-container">
+      <div class="quiz-progress" id="quiz-progress">
+        <div class="quiz-dot current" id="dot-0"></div>
+        <div class="quiz-dot" id="dot-1"></div>
+        <div class="quiz-dot" id="dot-2"></div>
+        <div class="quiz-dot" id="dot-3"></div>
+        <div class="quiz-dot" id="dot-4"></div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="quiz-step active" id="step-0">
+        <div class="quiz-question">What's your current education level?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(0, 'cc', this)">
+            <div class="quiz-option-title">Community College</div>
+            <div class="quiz-option-sub">Currently enrolled in a 2-year program</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(0, 'undergrad', this)">
+            <div class="quiz-option-title">Undergraduate (4-year)</div>
+            <div class="quiz-option-sub">Junior or Senior preferred; Sophomores eligible for some</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(0, 'grad', this)">
+            <div class="quiz-option-title">Graduate Student</div>
+            <div class="quiz-option-sub">Master's or Ph.D. program</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(0, 'other', this)">
+            <div class="quiz-option-title">Other / Exploring</div>
+            <div class="quiz-option-sub">Planning ahead or recently graduated</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-green" onclick="nextStep(0)" id="next-0" style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="quiz-step" id="step-1">
+        <div class="quiz-question">What's your primary field of study or interest?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(1, 'stem', this)">
+            <div class="quiz-option-title">STEM</div>
+            <div class="quiz-option-sub">Science, Engineering, Math, or Technology</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(1, 'business', this)">
+            <div class="quiz-option-title">Business / Analytics</div>
+            <div class="quiz-option-sub">Business, Finance, Data Analytics, Operations</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(1, 'computing', this)">
+            <div class="quiz-option-title">Computing / AI/ML</div>
+            <div class="quiz-option-sub">CS, Data Science, Software Engineering, AI</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(1, 'mixed', this)">
+            <div class="quiz-option-title">Both / Undecided</div>
+            <div class="quiz-option-sub">Interdisciplinary or still exploring</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(1)">← Back</button>
+          <button class="btn-green" onclick="nextStep(1)" id="next-1" style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="quiz-step" id="step-2">
+        <div class="quiz-question">Which area interests you most?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(2, 'energy', this)">
+            <div class="quiz-option-title">Energy & Environment</div>
+            <div class="quiz-option-sub">Clean energy, nuclear, climate, sustainability</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(2, 'defense', this)">
+            <div class="quiz-option-title">Defense & Aerospace</div>
+            <div class="quiz-option-sub">National security, aerospace, advanced materials</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(2, 'space', this)">
+            <div class="quiz-option-title">Space & Exploration</div>
+            <div class="quiz-option-sub">Missions, spacecraft, planetary science</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(2, 'open', this)">
+            <div class="quiz-option-title">Open to Anything</div>
+            <div class="quiz-option-sub">Most interested in the experience itself</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(2)">← Back</button>
+          <button class="btn-green" onclick="nextStep(2)" id="next-2" style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="quiz-step" id="step-3">
+        <div class="quiz-question">Are you a U.S. citizen or Lawful Permanent Resident (LPR)?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(3, 'yes', this)">
+            <div class="quiz-option-title">Yes</div>
+            <div class="quiz-option-sub">U.S. citizen or LPR (green card holder)</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(3, 'no', this)">
+            <div class="quiz-option-title">No</div>
+            <div class="quiz-option-sub">International student or visa holder</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(3)">← Back</button>
+          <button class="btn-green" onclick="nextStep(3)" id="next-3" style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="quiz-step" id="step-4">
+        <div class="quiz-question">What's your application timeline?</div>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(4, 'now', this)">
+            <div class="quiz-option-title">Summer 2026</div>
+            <div class="quiz-option-sub">Applying in the next 1–3 months</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(4, 'fall', this)">
+            <div class="quiz-option-title">Fall 2026</div>
+            <div class="quiz-option-sub">Planning for the fall semester</div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(4, 'future', this)">
+            <div class="quiz-option-title">2027 or beyond</div>
+            <div class="quiz-option-sub">Still a year or more out — exploring options</div>
+          </div>
+        </div>
+        <div class="quiz-nav">
+          <button class="quiz-back" onclick="prevStep(4)">← Back</button>
+          <button class="btn-green" onclick="showResults()" id="next-4" style="display:none">See My Matches →</button>
+        </div>
+      </div>
+
+    </div><!-- /quiz-container -->
+
+    <!-- RESULTS -->
+    <div class="quiz-results" id="quiz-results">
+      <div class="results-header">Your Top Matches</div>
+      <div class="results-sub" id="results-sub">Based on your answers, here are the programs we recommend most.</div>
+      <div class="results-grid" id="results-grid"></div>
+      <div style="margin-top: 1.5rem; padding: 1.25rem; background: var(--canvas); border: 1px solid var(--border); border-radius: 8px; font-size: 0.88rem; color: var(--text-muted);">
+        Want a personalized walkthrough? <a href="mailto:lablinkinitiative@gmail.com?subject=Internship Consultation" style="color: var(--brand-700); font-weight: 600;">Book a free consultation</a> and we'll help you build your application strategy.
+      </div>
+      <button class="quiz-restart" onclick="restartQuiz()">← Retake assessment</button>
+    </div>
+
+  </div><!-- /assessment-section -->
+
+  <!-- APPLICATION TRACKER -->
+  <div id="tracker" class="tracker-section">
+    <div class="tracker-header">
+      <div>
+        <div class="section-tag">Application Tracker</div>
+        <h2 class="section-title">Track Your Applications</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">Your progress is saved locally in your browser. No account needed.</p>
+      </div>
+      <button class="btn-primary" onclick="toggleAddForm()">+ Add Application</button>
+    </div>
+
+    <div class="add-app-form" id="add-app-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="app-name">Program Name</label>
+          <input type="text" id="app-name" class="form-input" placeholder="e.g. DOE SULI — Summer 2026" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="app-org">Organization</label>
+          <input type="text" id="app-org" class="form-input" placeholder="e.g. Idaho National Laboratory" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="app-deadline">Deadline</label>
+          <input type="text" id="app-deadline" class="form-input" placeholder="e.g. January 9, 2026" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="app-status">Status</label>
+          <select id="app-status" class="form-select">
+            <option value="researching">Researching</option>
+            <option value="preparing">Preparing Application</option>
+            <option value="submitted">Submitted</option>
+            <option value="pending">Decision Pending</option>
+            <option value="accepted">Accepted ✓</option>
+            <option value="declined">Not Selected</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-green" onclick="addApplication()">Add to Tracker</button>
+        <button class="btn-outline-small" onclick="toggleAddForm()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="tracker-list" id="tracker-list"></div>
+    <div class="tracker-empty" id="tracker-empty">
+      <div style="font-size: 2.5rem; margin-bottom: 0.75rem;">📋</div>
+      <div style="font-weight: 700; color: var(--text-default); margin-bottom: 0.5rem;">No applications tracked yet</div>
+      <div>Click "+ Track This" on any listing above, or use the "Add Application" button to get started.</div>
+    </div>
+  </div><!-- /tracker -->
+
+</div><!-- /main-content -->
+
+<!-- PAGE CTA -->
+<div class="page-cta">
+  <h2>Need help navigating the process?</h2>
+  <p>Book a free 15-minute consultation. We've been through these applications — we know exactly what the labs look for.</p>
+  <div class="page-cta-buttons">
+    <a href="mailto:lablinkinitiative@gmail.com?subject=Free Internship Consultation" class="btn-white">Book Free Consultation</a>
+    <a href="path-to-national-lab-internship.pdf" target="_blank" class="btn-outline-small" style="color: var(--white); border-color: rgba(255,255,255,0.4);">Download Internship Guide PDF</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-mini">
+    <span>© 2026 <a href="/">LabLink Initiative</a> · 501(c)(3) Nonprofit · Free for Students</span>
+    <div class="footer-mini-links">
+      <a href="/">Home</a>
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="mailto:lablinkinitiative@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── NAV ───
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.style.display === 'block';
+  mobileMenu.style.display = open ? 'none' : 'block';
+});
+function closeMenu() { mobileMenu.style.display = 'none'; }
+
+// ─── FILTERS ───
+let activeTypeFilter = 'all';
+let activeLevelFilter = 'all';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filterGroup = btn.dataset.filter;
+    const value = btn.dataset.value;
+    if (filterGroup === 'type') {
+      activeTypeFilter = value;
+      document.querySelectorAll('[data-filter="type"]').forEach(b => b.classList.remove('active'));
+    } else if (filterGroup === 'level') {
+      activeLevelFilter = value;
+      document.querySelectorAll('[data-filter="level"]').forEach(b => b.classList.remove('active'));
+    }
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
+
+function applyFilters() {
+  const cards = document.querySelectorAll('.listing-card');
+  let visibleCount = 0;
+  cards.forEach(card => {
+    const type = card.dataset.type;
+    const level = card.dataset.level;
+    const typeMatch = activeTypeFilter === 'all' || type === activeTypeFilter;
+    const levelMatch = activeLevelFilter === 'all' || level === activeLevelFilter;
+    if (typeMatch && levelMatch) {
+      card.classList.remove('hidden');
+      visibleCount++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  const noResults = document.getElementById('no-results');
+  noResults.classList.toggle('visible', visibleCount === 0);
+}
+
+function resetFilters() {
+  activeTypeFilter = 'all';
+  activeLevelFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('[data-value="all"]').forEach(b => b.classList.add('active'));
+  applyFilters();
+}
+
+// ─── ASSESSMENT QUIZ ───
+let answers = {};
+
+function selectOption(step, value, el) {
+  answers[step] = value;
+  document.querySelectorAll('#step-' + step + ' .quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('next-' + step).style.display = 'inline-block';
+}
+
+function nextStep(currentStep) {
+  if (answers[currentStep] === undefined) return;
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  const nextIdx = currentStep + 1;
+  const nextEl = document.getElementById('step-' + nextIdx);
+  if (nextEl) nextEl.classList.add('active');
+  updateProgress(nextIdx);
+}
+
+function prevStep(currentStep) {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  const prevIdx = currentStep - 1;
+  document.getElementById('step-' + prevIdx).classList.add('active');
+  updateProgress(prevIdx);
+}
+
+function updateProgress(current) {
+  for (let i = 0; i < 5; i++) {
+    const dot = document.getElementById('dot-' + i);
+    dot.className = 'quiz-dot';
+    if (i < current) dot.classList.add('done');
+    else if (i === current) dot.classList.add('current');
+  }
+}
+
+function showResults() {
+  document.getElementById('quiz-container').style.display = 'none';
+  const resultsDiv = document.getElementById('quiz-results');
+  resultsDiv.classList.add('active');
+
+  const level = answers[0];
+  const field = answers[1];
+  const interest = answers[2];
+  const citizen = answers[3];
+  const timeline = answers[4];
+
+  const recommendations = [];
+
+  // Logic-based recommendations
+  if (level === 'cc' && citizen === 'yes') {
+    recommendations.push({ name: 'DOE CCI', sub: 'Community College Internships', desc: 'Designed specifically for CC students. This is the premier pathway from community college to a national lab.', top: true, link: '#listings' });
+    recommendations.push({ name: 'DOE SULI', sub: 'Once you transfer to a 4-year', desc: 'Apply to SULI after transferring — it\'s the most prestigious undergrad research program in the DOE system.', top: false, link: '#listings' });
+  } else if (level === 'undergrad' && citizen === 'yes') {
+    recommendations.push({ name: 'DOE SULI', sub: 'Science Undergrad Lab Internships', desc: 'Your top match. Paid research at any of 17 DOE national labs — directly aligned with your profile.', top: true, link: '#listings' });
+    if (interest === 'energy') {
+      recommendations.push({ name: 'Mickey Leland Energy Fellowship', sub: 'DOE Energy Research', desc: 'Strong match if you\'re interested in energy and want a fellowship with DEI focus.', top: false, link: '#listings' });
+    }
+    if (interest === 'defense') {
+      recommendations.push({ name: 'AFRL Scholars', sub: 'Air Force Research Lab', desc: 'A direct match for your interest in defense and aerospace research.', top: false, link: '#listings' });
+    }
+    if (interest === 'space') {
+      recommendations.push({ name: 'NASA Internships', sub: 'NASA Centers Nationwide', desc: 'Multiple NASA centers offer internships aligned with your space and aerospace interests.', top: true, link: '#listings' });
+    }
+  } else if (level === 'grad') {
+    if (interest === 'defense' || interest === 'space') {
+      recommendations.push({ name: 'AFRL Scholars', sub: 'Graduate-level research positions', desc: 'AFRL actively recruits graduate students for advanced research in defense and aerospace.', top: true, link: '#listings' });
+    }
+    recommendations.push({ name: 'DOE SULI', sub: 'Graduate option available', desc: 'SULI has graduate-level placements across DOE national labs in your area of interest.', top: false, link: '#listings' });
+    if (interest === 'space') {
+      recommendations.push({ name: 'NASA Internships', sub: 'Graduate opportunities', desc: 'NASA recruits graduate students for research across all 10 centers.', top: false, link: '#listings' });
+    }
+  }
+
+  if (field === 'business' || field === 'mixed') {
+    recommendations.push({ name: 'Industry Placements via LLI', sub: 'Business & Analytics roles', desc: 'We specifically match business and analytics students with employer partners who need those skills.', top: field === 'business', link: '#listings' });
+    recommendations.push({ name: 'NASA Internships', sub: 'Business & operations roles', desc: 'NASA has specific openings for finance, communications, and business operations students.', top: false, link: '#listings' });
+  }
+
+  if (citizen === 'no') {
+    recommendations.length = 0;
+    recommendations.push({ name: 'Industry Placements via LLI', sub: 'Visa-friendly roles', desc: 'Most federal programs require US citizenship/LPR. Industry partners can often sponsor or hire international students — we can help connect you.', top: true, link: '#listings' });
+    recommendations.push({ name: 'LabLink Free Consultation', sub: 'Find your options', desc: 'Let\'s talk — international students have real options and we can help identify the best path for you.', top: false, link: 'mailto:lablinkinitiative@gmail.com?subject=International Student Internship Help' });
+  }
+
+  if (recommendations.length === 0) {
+    recommendations.push({ name: 'DOE SULI', sub: 'Great starting point', desc: 'SULI is the broadest and most accessible national lab internship program — start here.', top: true, link: '#listings' });
+    recommendations.push({ name: 'Book a Free Consultation', sub: 'Personalized guidance', desc: 'Our team can give you a personalized recommendation based on your full background.', top: false, link: 'mailto:lablinkinitiative@gmail.com?subject=Internship Consultation' });
+  }
+
+  const grid = document.getElementById('results-grid');
+  grid.innerHTML = recommendations.slice(0, 4).map(r => `
+    <div class="result-card ${r.top ? 'top-match' : ''}">
+      ${r.top ? '<div class="result-match-badge">★ Top Match</div>' : ''}
+      <h4>${r.name}</h4>
+      <div style="font-size:0.75rem; color: var(--brand-500); font-weight: 600; margin-bottom: 0.4rem;">${r.sub}</div>
+      <p>${r.desc}</p>
+      <a href="${r.link}">View Program →</a>
+    </div>
+  `).join('');
+}
+
+function restartQuiz() {
+  answers = {};
+  document.getElementById('quiz-container').style.display = 'block';
+  document.getElementById('quiz-results').classList.remove('active');
+  document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-0').classList.add('active');
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('[id^="next-"]').forEach(b => b.style.display = 'none');
+  updateProgress(0);
+}
+
+// ─── APPLICATION TRACKER ───
+let applications = JSON.parse(localStorage.getItem('lli_tracker') || '[]');
+
+function saveTracker() {
+  localStorage.setItem('lli_tracker', JSON.stringify(applications));
+  renderTracker();
+}
+
+function renderTracker() {
+  const list = document.getElementById('tracker-list');
+  const empty = document.getElementById('tracker-empty');
+  if (applications.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  list.innerHTML = applications.map((app, i) => `
+    <div class="tracker-item">
+      <div style="flex: 1; min-width: 180px;">
+        <div class="tracker-item-name">${escHtml(app.name)}</div>
+        <div class="tracker-item-org">${escHtml(app.org)}</div>
+      </div>
+      ${app.deadline ? `<div class="tracker-deadline">📅 ${escHtml(app.deadline)}</div>` : ''}
+      <select class="status-select status-${app.status}" onchange="updateStatus(${i}, this.value)">
+        <option value="researching" ${app.status==='researching'?'selected':''}>Researching</option>
+        <option value="preparing" ${app.status==='preparing'?'selected':''}>Preparing</option>
+        <option value="submitted" ${app.status==='submitted'?'selected':''}>Submitted</option>
+        <option value="pending" ${app.status==='pending'?'selected':''}>Decision Pending</option>
+        <option value="accepted" ${app.status==='accepted'?'selected':''}>Accepted ✓</option>
+        <option value="declined" ${app.status==='declined'?'selected':''}>Not Selected</option>
+      </select>
+      <button class="tracker-delete" onclick="removeApp(${i})" title="Remove">✕</button>
+    </div>
+  `).join('');
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function updateStatus(i, val) {
+  applications[i].status = val;
+  saveTracker();
+}
+
+function removeApp(i) {
+  applications.splice(i, 1);
+  saveTracker();
+}
+
+function toggleAddForm() {
+  const form = document.getElementById('add-app-form');
+  form.classList.toggle('open');
+}
+
+function addApplication() {
+  const name = document.getElementById('app-name').value.trim();
+  const org = document.getElementById('app-org').value.trim();
+  const deadline = document.getElementById('app-deadline').value.trim();
+  const status = document.getElementById('app-status').value;
+  if (!name) { alert('Please enter a program name.'); return; }
+  applications.push({ name, org, deadline, status });
+  saveTracker();
+  document.getElementById('app-name').value = '';
+  document.getElementById('app-org').value = '';
+  document.getElementById('app-deadline').value = '';
+  document.getElementById('app-status').value = 'researching';
+  document.getElementById('add-app-form').classList.remove('open');
+}
+
+function trackProgram(btn, name, org) {
+  const existing = applications.find(a => a.name === name);
+  if (existing) {
+    alert(name + ' is already in your tracker. Scroll down to the Application Tracker to update its status.');
+    return;
+  }
+  applications.push({ name, org, deadline: '', status: 'researching' });
+  saveTracker();
+  btn.classList.add('tracked');
+  btn.textContent = '✓ Tracking';
+  document.getElementById('tracker').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(() => { document.querySelector('#tracker').style.outline = '2px solid var(--accent-lime)'; setTimeout(() => { document.querySelector('#tracker').style.outline = ''; }, 2000); }, 300);
+}
+
+// Restore tracked state for buttons
+function restoreTrackedButtons() {
+  const trackedNames = applications.map(a => a.name);
+  document.querySelectorAll('.track-btn').forEach(btn => {
+    const onclick = btn.getAttribute('onclick');
+    const match = onclick && onclick.match(/'([^']+)'/);
+    if (match && trackedNames.includes(match[1])) {
+      btn.classList.add('tracked');
+      btn.textContent = '✓ Tracking';
+    }
+  });
+}
+
+// Init
+renderTracker();
+restoreTrackedButtons();
+</script>
+
+</body>
+</html>

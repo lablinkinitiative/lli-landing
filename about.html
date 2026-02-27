@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — LabLink Initiative</title>
+  <meta name="description" content="LabLink Initiative is a 501(c)(3) nonprofit co-founded by Michael Sarmiento and Sean Florez to connect college students with career experiences at National Laboratories, federal agencies, and industry partners." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand-900: #2E3A23;
+      --brand-700: #4A5F39;
+      --brand-500: #6E8A53;
+      --brand-300: #A7BE8E;
+      --accent-lime: #A5C43A;
+      --accent-sand: #CDB892;
+      --accent-teal: #3F8E9E;
+      --canvas: #FAF8F0;
+      --surface: #F3F0E6;
+      --surface-2: #E8E3D4;
+      --border: #C9C2AE;
+      --text-strong: #111312;
+      --text-default: #253021;
+      --text-muted: #5F6A58;
+      --white: #FFFFFF;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--canvas); color: var(--text-default); line-height: 1.6; }
+
+    /* NAV */
+    nav { background: var(--brand-900); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: var(--white); font-weight: 700; font-size: 1.125rem; text-decoration: none; }
+    .nav-logo span { color: var(--accent-lime); }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--brand-300); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-cta { background: var(--accent-lime); color: #1D2A10 !important; padding: 0.5rem 1.25rem; border-radius: 6px; font-weight: 600 !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--brand-900); padding: 1rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu a { display: block; color: var(--brand-300); text-decoration: none; padding: 0.6rem 0; font-size: 1rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta { display: block; margin-top: 1rem; background: var(--accent-lime); color: #1D2A10 !important; text-align: center; padding: 0.75rem; border-radius: 8px; font-weight: 700; }
+
+    /* PAGE HERO */
+    .page-hero { background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-700) 100%); color: var(--white); padding: 4rem 2rem 3.5rem; text-align: center; }
+    .breadcrumb { font-size: 0.82rem; color: var(--brand-300); margin-bottom: 1rem; }
+    .breadcrumb a { color: var(--brand-300); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 700; max-width: 700px; margin: 0 auto 1rem; line-height: 1.2; }
+    .page-hero h1 span { color: var(--accent-lime); }
+    .page-hero p { color: var(--brand-300); font-size: 1.05rem; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* SECTIONS */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 4.5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-center { text-align: center; }
+    .section-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--brand-500); margin-bottom: 0.5rem; }
+    h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--text-strong); letter-spacing: -0.01em; margin-bottom: 1rem; }
+    .section-intro { font-size: 1.05rem; color: var(--text-muted); max-width: 640px; line-height: 1.7; margin-bottom: 2.5rem; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* MISSION BLOCK */
+    .mission-block { padding: 4.5rem 2rem; }
+    .mission-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .mission-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; color: var(--text-strong); margin-bottom: 1.25rem; line-height: 1.25; }
+    .mission-text p { font-size: 1rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; }
+    .mission-text p:last-child { margin-bottom: 0; }
+    .mission-aside { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+    .mission-aside h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--text-strong); margin-bottom: 1.25rem; }
+    .value-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .value-item { display: flex; gap: 0.75rem; }
+    .value-icon { width: 32px; height: 32px; background: var(--brand-700); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .value-body h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.15rem; }
+    .value-body p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* FOUNDERS */
+    .founders-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4.5rem 2rem; }
+    .founders-inner { max-width: 1100px; margin: 0 auto; }
+    .founder-full { background: var(--canvas); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem; margin-bottom: 2rem; }
+    .founder-full:last-child { margin-bottom: 0; }
+    .founder-header { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .founder-avatar { width: 110px; height: 110px; border-radius: 12px; background: var(--brand-700); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; color: var(--white); font-weight: 700; flex-shrink: 0; font-family: 'Playfair Display', serif; overflow: hidden; }
+    .founder-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .welcome-photos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 3rem; }
+    .welcome-photo { border-radius: 12px; overflow: hidden; height: 200px; }
+    .welcome-photo img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 600px) { .welcome-photos { grid-template-columns: 1fr; } }
+    .founder-title-block h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.2rem; }
+    .founder-role-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-500); }
+    .founder-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
+    .founder-body p:last-child { margin-bottom: 0; }
+    .founder-highlights { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+    .highlight-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; flex: 1; min-width: 160px; }
+    .highlight-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.2rem; }
+    .highlight-val { font-size: 0.88rem; font-weight: 700; color: var(--text-default); }
+
+    /* ROADMAP */
+    .roadmap-section { padding: 4.5rem 2rem; }
+    .roadmap-inner { max-width: 1100px; margin: 0 auto; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .roadmap-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; }
+    .roadmap-card.active { border-color: var(--brand-700); background: rgba(74,95,57,0.05); }
+    .roadmap-phase { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--brand-500); margin-bottom: 0.5rem; }
+    .roadmap-years { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-strong); margin-bottom: 0.75rem; }
+    .roadmap-items { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .roadmap-items li { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 0.5rem; }
+    .roadmap-items li::before { content: '→'; color: var(--brand-500); flex-shrink: 0; }
+    .phase-badge { position: absolute; top: 1rem; right: 1rem; background: var(--accent-lime); color: #1D2A10; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.5rem; border-radius: 4px; }
+
+    /* IMPACT */
+    .impact-section { background: var(--brand-900); color: var(--white); padding: 4rem 2rem; text-align: center; }
+    .impact-section .section-tag { color: var(--accent-lime); }
+    .impact-section h2.section-title { color: var(--white); }
+    .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 2rem auto 0; }
+    .impact-item { padding: 1.5rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; }
+    .impact-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent-lime); line-height: 1; }
+    .impact-label { font-size: 0.82rem; color: var(--brand-300); margin-top: 0.4rem; line-height: 1.45; }
+
+    /* PARTNERS */
+    .partners-block { padding: 4rem 2rem; text-align: center; }
+    .partners-inner { max-width: 1100px; margin: 0 auto; }
+    .partner-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+    .partner-chip { background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; }
+    .partner-chip.mou { border-color: rgba(165,196,58,0.4); background: rgba(165,196,58,0.06); color: var(--brand-700); font-weight: 600; }
+
+    /* CTA */
+    .page-cta { background: linear-gradient(135deg, var(--brand-700), var(--brand-900)); color: var(--white); padding: 4rem 2rem; text-align: center; }
+    .page-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
+    .page-cta p { color: var(--brand-300); font-size: 1rem; max-width: 520px; margin: 0 auto 2rem; line-height: 1.7; }
+    .page-cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--brand-900); padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; }
+    .btn-lime { background: var(--accent-lime); color: #1D2A10; padding: 0.85rem 1.75rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-decoration: none; display: inline-block; }
+
+    /* FOOTER */
+    footer { background: var(--brand-900); color: var(--brand-300); padding: 2rem; font-size: 0.85rem; }
+    .footer-mini { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-mini a { color: var(--brand-300); text-decoration: none; }
+    .footer-mini a:hover { color: var(--white); }
+    .footer-mini-links { display: flex; gap: 1.5rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .mission-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .founder-header { flex-direction: column; }
+      .highlight-item { min-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">LabLink<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#programs">Programs</a></li>
+    <li><a href="internships.html">Internships</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="/#partners">Partners</a></li>
+    <li><a href="/#newsletter">Newsletter</a></li>
+    <li><a href="donate.html">Donate</a></li>
+    <li><a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="nav-cta">Free Consultation</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="closeMenu()">Home</a>
+  <a href="internships.html" onclick="closeMenu()">Internships</a>
+  <a href="about.html" onclick="closeMenu()">About Us</a>
+  <a href="donate.html" onclick="closeMenu()">Donate</a>
+  <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="mobile-cta" onclick="closeMenu()">Free Consultation</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; About Us</div>
+  <h1>About <span>LabLink Initiative</span></h1>
+  <p>A 501(c)(3) nonprofit co-founded by two people who bridged the gap from community college to national laboratories — and built an organization to help others do the same.</p>
+</div>
+
+<!-- WELCOME PHOTOS -->
+<div style="max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 0;">
+  <div class="welcome-photos">
+    <div class="welcome-photo"><img src="images/about-welcome-team.jpg" alt="LabLink team collaboration" loading="lazy" /></div>
+    <div class="welcome-photo"><img src="images/about-welcome-office.jpg" alt="Professional workspace" loading="lazy" /></div>
+    <div class="welcome-photo"><img src="images/about-welcome-students.jpg" alt="Students working together" loading="lazy" /></div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="mission-block">
+  <div class="mission-inner">
+    <div class="mission-text">
+      <div class="section-tag">Our Mission</div>
+      <h2>"Educate, Empower, Connect"</h2>
+      <p>LabLink Initiative educates and empowers college-aged students by providing relevant career experiences. We connect students with valuable opportunities in STEM and Business through partnerships with National Labs, federal agencies, and industry partners — bridging the gap between academic learning and professional application.</p>
+      <p>We exist because opportunity shouldn't depend on who you know. Too many qualified students — especially at community colleges — never even learn that national lab internships exist. We fix that.</p>
+      <p><strong>All of our programs are free for students.</strong> We're funded by grants, sponsorships, and donations from people who believe access to great opportunities shouldn't have a price tag.</p>
+    </div>
+    <div class="mission-aside">
+      <h3>Our Core Values</h3>
+      <ul class="value-list">
+        <li class="value-item">
+          <div class="value-icon">💪</div>
+          <div class="value-body">
+            <h4>Empowerment</h4>
+            <p>We build students up through knowledge, skills, and real-world experience — not just information.</p>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">⭐</div>
+          <div class="value-body">
+            <h4>Excellence</h4>
+            <p>We hold our programs, materials, and partnerships to a high standard because students deserve the best.</p>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">🤝</div>
+          <div class="value-body">
+            <h4>Collaboration</h4>
+            <p>We partner with the labs, agencies, and organizations that actually hire students — not just broker introductions.</p>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">🔬</div>
+          <div class="value-body">
+            <h4>Innovation</h4>
+            <p>From our AI-powered CE-CDP platform to the LinkBot Newsletter, we use technology to scale our mission.</p>
+          </div>
+        </li>
+        <li class="value-item">
+          <div class="value-icon">🌍</div>
+          <div class="value-body">
+            <h4>Inclusivity</h4>
+            <p>We prioritize students who have been underrepresented in STEM and national security fields.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- FOUNDERS -->
+<div class="founders-section">
+  <div class="founders-inner">
+    <div class="section-tag">Leadership</div>
+    <h2 class="section-title">Founded by people who made the journey</h2>
+    <p class="section-intro">Michael and Sean built LabLink Initiative because they went from community college and university to working at national laboratories — and knew that most students never get the chance because no one tells them it's possible.</p>
+
+    <div class="founder-full">
+      <div class="founder-header">
+        <div class="founder-avatar">
+          <img src="images/michael-sarmento.avif" alt="Michael Sarmiento" />
+        </div>
+        <div class="founder-title-block">
+          <h3>Michael Sarmiento</h3>
+          <div class="founder-role-label">Co-Founder & Executive Director</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <p>Michael's path is the model LabLink Initiative was built to replicate. He started at community college and made it to DOE/Idaho National Laboratory, the California Environmental Protection Agency (CARB), and NNSA/Lawrence Livermore National Laboratory — three of the most competitive science and policy institutions in the country.</p>
+        <p>His background in Business Analytics gives LLI a perspective that most STEM-focused organizations miss: business and policy students belong in these spaces too. National labs need analysts, operations managers, project coordinators, and communicators — not just scientists.</p>
+        <p>As PTK (Phi Theta Kappa) President at Sacramento City College in 2024–25, Michael co-organized LLI's first major public event — a national webinar with INL that reached hundreds of community college students. He understands the community college experience from the inside, and leads LLI's partnerships, programming, and strategy with that perspective.</p>
+      </div>
+      <div class="founder-highlights">
+        <div class="highlight-item"><div class="highlight-label">Education</div><div class="highlight-val">Business Analytics</div></div>
+        <div class="highlight-item"><div class="highlight-label">DOE Experience</div><div class="highlight-val">Idaho National Lab (INL)</div></div>
+        <div class="highlight-item"><div class="highlight-label">Other Experience</div><div class="highlight-val">NNSA/LLNL, CA EPA/CARB</div></div>
+        <div class="highlight-item"><div class="highlight-label">Community Role</div><div class="highlight-val">PTK President, SCC 2024–25</div></div>
+      </div>
+    </div>
+
+    <div class="founder-full">
+      <div class="founder-header">
+        <div class="founder-avatar">
+          <img src="images/sean-florez.avif" alt="Sean Florez" />
+        </div>
+        <div class="founder-title-block">
+          <h3>Sean Florez</h3>
+          <div class="founder-role-label">Co-Founder & Director of Technology Innovation</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <p>Sean is a Ph.D. Materials Scientist with a research and engineering career that spans the DOE national laboratory system, the U.S. Air Force Research Laboratory (AFRL), and the Department of Defense's Joint Staff as a Foreign Technology Officer. He earned his Ph.D. in Materials Science from the University of Colorado Boulder, and his B.S. from the University of Florida.</p>
+        <p>He holds two U.S. patents (US-2024-0076793A1 and US-1154-4916B2), reflecting the depth and novelty of his research contributions. His experience across DOE, DoD, and AFRL spans the full spectrum of federally-funded science — giving LLI connections and credibility with some of the most competitive programs in the country.</p>
+        <p>Sean architected and built the CE-CDP (Clean Energy Career Development Platform) — LLI's AI-powered platform for skill gap assessment, personalized learning pathways, and internship matching. He leads technology strategy, platform development, and technical partnerships, and keeps LLI at the forefront of what's possible.</p>
+      </div>
+      <div class="founder-highlights">
+        <div class="highlight-item"><div class="highlight-label">Education</div><div class="highlight-val">Ph.D. Materials Science, CU Boulder · B.S. UF</div></div>
+        <div class="highlight-item"><div class="highlight-label">DOE Experience</div><div class="highlight-val">Idaho National Laboratory (INL)</div></div>
+        <div class="highlight-item"><div class="highlight-label">Defense</div><div class="highlight-val">AFRL + Joint Staff / DoD FTO</div></div>
+        <div class="highlight-item"><div class="highlight-label">Patents</div><div class="highlight-val">US-2024-0076793A1 · US-1154-4916B2</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- IMPACT -->
+<div class="impact-section">
+  <div class="section-tag">5-Year Goals</div>
+  <h2 class="section-title">Where we're going</h2>
+  <div class="impact-grid">
+    <div class="impact-item">
+      <div class="impact-num">250+</div>
+      <div class="impact-label">Students mentored directly</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">200+</div>
+      <div class="impact-label">Internship placements facilitated</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">$50K+</div>
+      <div class="impact-label">Scholarships and grants awarded</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">25+</div>
+      <div class="impact-label">Institutional partners</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">90%</div>
+      <div class="impact-label">Target participant satisfaction rate</div>
+    </div>
+    <div class="impact-item">
+      <div class="impact-num">10+</div>
+      <div class="impact-label">Annual workshops and seminars</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROADMAP -->
+<div class="roadmap-section">
+  <div class="roadmap-inner">
+    <div class="section-tag">Roadmap</div>
+    <h2 class="section-title">Building for the long term</h2>
+    <p class="section-intro">LLI is a young organization with an ambitious multi-year plan. Here's where we're going — and where we are right now.</p>
+    <div class="roadmap-grid">
+      <div class="roadmap-card active">
+        <div class="phase-badge">Now</div>
+        <div class="roadmap-phase">Phase 1</div>
+        <div class="roadmap-years">Years 1–2</div>
+        <ul class="roadmap-items">
+          <li>Launch AI-powered CE-CDP platform</li>
+          <li>Establish 25+ institutional partnerships</li>
+          <li>Connect 500+ students to opportunities</li>
+          <li>Launch LinkBot Newsletter (5,000+ subscribers)</li>
+          <li>Host first major events (PTK webinar ✓)</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase">Phase 2</div>
+        <div class="roadmap-years">Years 2–3</div>
+        <ul class="roadmap-items">
+          <li>Expand to 1,500+ students served</li>
+          <li>Develop clean energy curriculum</li>
+          <li>Launch $20K scholarship program</li>
+          <li>Deepen industry partnerships</li>
+          <li>Regional presence in multiple metros</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase">Phase 3</div>
+        <div class="roadmap-years">Years 3–4</div>
+        <ul class="roadmap-items">
+          <li>Reach 3,000+ program participants</li>
+          <li>Facilitate 200+ annual internships</li>
+          <li>Expand scholarships to $35K/year</li>
+          <li>Full CE-CDP deployment at scale</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <div class="roadmap-phase">Phase 4</div>
+        <div class="roadmap-years">Years 4–5</div>
+        <ul class="roadmap-items">
+          <li>Organizational sustainability achieved</li>
+          <li>National reach across all time zones</li>
+          <li>LabLink recognized as leading national lab career pathway org</li>
+          <li>$50K+ in annual scholarship awards</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- PARTNERS -->
+<div class="partners-block">
+  <div class="partners-inner">
+    <div class="section-tag">Partners & Affiliates</div>
+    <h2 class="section-title">Our network</h2>
+    <p class="section-intro" style="margin: 0 auto 0;">These are the organizations we work with — national labs, federal agencies, community organizations, and professional associations aligned with our mission.</p>
+    <div class="partner-chips">
+      <div class="partner-chip mou">✓ SNTJ — MOU Signed</div>
+      <div class="partner-chip mou">✓ SSG&amp;I — MOU Signed</div>
+      <div class="partner-chip">Idaho National Laboratory (INL)</div>
+      <div class="partner-chip">Sandia National Laboratories</div>
+      <div class="partner-chip">LLNL</div>
+      <div class="partner-chip">ORNL</div>
+      <div class="partner-chip">LBNL</div>
+      <div class="partner-chip">DOE SULI Program</div>
+      <div class="partner-chip">DOE CCI Program</div>
+      <div class="partner-chip">Phi Theta Kappa (PTK)</div>
+      <div class="partner-chip">ALPFA</div>
+      <div class="partner-chip">CEC4A Network</div>
+      <div class="partner-chip">AFRL</div>
+      <div class="partner-chip">NASA</div>
+      <div class="partner-chip">Zintellect / ORISE</div>
+    </div>
+    <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">Interested in partnering with LabLink Initiative? <a href="mailto:lablinkinitiative@gmail.com?subject=Partnership Inquiry" style="color: var(--brand-700); font-weight: 600;">Reach out to us.</a></p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="page-cta">
+  <h2>Work with us</h2>
+  <p>Whether you're a student, a potential partner organization, or someone who wants to support our mission — we'd love to hear from you.</p>
+  <div class="page-cta-buttons">
+    <a href="mailto:lablinkinitiative@gmail.com?subject=Free Consultation Request" class="btn-white">Book a Free Consultation</a>
+    <a href="donate.html" class="btn-lime">Support Our Work</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-mini">
+    <span>© 2026 <a href="/">LabLink Initiative</a> · 501(c)(3) Nonprofit · EIN available upon request</span>
+    <div class="footer-mini-links">
+      <a href="/">Home</a>
+      <a href="internships.html">Internships</a>
+      <a href="donate.html">Donate</a>
+      <a href="mailto:lablinkinitiative@gmail.com">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.style.display === 'block';
+    mobileMenu.style.display = open ? 'none' : 'block';
+  });
+  function closeMenu() { mobileMenu.style.display = 'none'; }
+</script>
+
+</body>
+</html>
